@@ -1,0 +1,29 @@
+@charset "ISO-8859-1";
+*{
+	margin:0;
+	padding:0;
+}
+
+body{
+	font-family:"Roman";
+}
+
+.h-primary{
+	font-size:6rem;
+}
+
+.h-secondary{
+	font-size:1.5rem;
+}
+
+.centre{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	padding:100px;
+}
+
+
+
+
+
