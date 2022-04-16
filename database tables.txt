@@ -1,0 +1,161 @@
+create table Customer_P 
+(
+cust_id number(20) primary key,
+cust_fname varchar2(10) not null,
+cust_mname varchar2(10),
+cust_lname varchar2(10),
+cust_email varchar2(250) not null,
+cust_phone varchar2(11) not null,
+cust_state varchar2(50),
+cust_pincode number(10),
+Foreign key(cust_phone) references phone_type(phone_num)
+);
+
+create table phone_type
+(
+phone_num varchar2(11) primary key,
+type varchar2(50)
+);
+
+create table Bank
+(
+bank_code number(30) primary key,
+bank_name varchar2(50) not null,
+bank_branch varchar2(50) not null
+);
+
+create table Account
+(
+acc_num number(30) primary key,
+acc_type number(5) not null,
+acc_balance number(35) not null,
+acc_bank_code number(30),
+Foreign key(acc_bank_code) references Bank(bank_code)
+);
+
+create table cust_acc
+(
+cust_phone varchar2(11),
+acc_num number(30),
+Foreign key(cust_phone) references Customer_P(cust_phone),
+Foreign key(acc_num) references Account(acc_num)
+);
+
+create table Transaction
+(
+acc_num1 number(30),
+acc_num2 number(30),
+date1 Date,
+type varchar2(50),
+amount number(30),
+Foreign key(acc_num1) references Account(acc_num),
+Foreign key(acc_num2) references Account(acc_num)
+);
+
+alter table Customer_P modify cust_phone varchar(11) unique;
+alter table Account add security_pin number(20);
+
+create table jio_recharge 
+(
+id number(10) primary key,
+price number(30) not null,
+calls varchar2(20),
+net number(20) not null,
+sms varchar2(20) not null
+);
+
+create table airtel_recharge 
+(
+id number(10) primary key,
+price number(30) not null,
+calls varchar2(20),
+net number(20) not null,
+sms varchar2(20) not null
+);
+
+create table Airtel_DTH_Recharge
+(
+id number(20) primary key,
+validity number(20) not null,
+price number(20) not null
+);
+
+create table dth_recharge
+(
+sid varchar2(20) primary key,
+type varchar2(20) not null
+);
+
+create table Dish_DTH_Recharge
+(
+id number(20) primary key,
+validity number(20) not null,
+price number(20) not null
+);
+
+create table TataPlay_DTH_Recharge
+(
+id number(20) primary key,
+validity number(20) not null,
+price number(20) not null
+);
+
+create table D2H_DTH_Recharge
+(
+id number(20) primary key,
+validity number(20) not null,
+price number(20) not null
+);
+
+
+create table adani_electricity
+(
+cons_no number(20) primary key,
+phno varchar2(11),
+amount number(20) not null,
+date2 date not null,
+status number(10) default 0,
+foreign key(phno) references Customer_P(cust_phone) 
+);
+
+create table Best_Mumbai
+(
+cons_no number(20) primary key,
+phno varchar2(11),
+amount number(20) not null,
+date2 date not null,
+status number(10) default 0,
+foreign key(phno) references Customer_P(cust_phone) 
+);
+
+create table MSEDC_Mahavitaran
+(
+cons_no number(20) primary key,
+phno varchar2(11),
+amount number(20) not null,
+date2 date not null,
+status number(10) default 0,
+foreign key(phno) references Customer_P(cust_phone) 
+);
+
+
+create table Tata_Power_mumbai
+(
+cons_no number(20) primary key,
+phno varchar2(11),
+amount number(20) not null,
+date2 date not null,
+status number(10) default 0,
+foreign key(phno) references Customer_P(cust_phone) 
+);
+
+
+create table Torrent_Power
+(
+cons_no number(20) primary key,
+phno varchar2(11),
+amount number(20) not null,
+date2 date not null,
+status number(10) default 0,
+foreign key(phno) references Customer_P(cust_phone) 
+);
